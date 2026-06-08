@@ -1,0 +1,23 @@
+.h1{
+    text-align: center;
+    color: var(--color-acid);
+}
+
+.titulo{
+    text-align: center;
+    color: var(--color-portal);
+}
+
+.container{
+    border: 2px solid var(--color-portal-dark);
+    background-color: var(--color-panel);
+    color: var(--color-text);
+}
+
+.button{
+    display: block;
+    flex-direction: row;
+    border-radius: 10px;
+    background-color: var(--color-portal);
+    color: var(--color-space);
+}

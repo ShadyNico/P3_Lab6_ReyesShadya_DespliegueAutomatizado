@@ -1,0 +1,1 @@
+export {EquipoPage} from './equipo';

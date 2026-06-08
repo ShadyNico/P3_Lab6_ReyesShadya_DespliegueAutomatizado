@@ -1,0 +1,23 @@
+:root {
+  --color-space: #071821;
+  --color-panel: #102a32;
+  --color-portal: #72f542;
+  --color-portal-dark: #2fb344;
+  --color-cyan: #8be9fd;
+  --color-acid: #d4f75f;
+  --color-text: #edf7f6;
+  --color-muted: #b9d6d0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-space);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-acid);
+}
