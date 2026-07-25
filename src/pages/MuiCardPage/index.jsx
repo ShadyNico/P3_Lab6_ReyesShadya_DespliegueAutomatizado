@@ -1,0 +1,1 @@
+export { MuiCardPage } from "./MuiCardPage";

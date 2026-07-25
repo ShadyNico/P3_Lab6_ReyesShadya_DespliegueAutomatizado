@@ -1,8 +1,314 @@
-h2{
-  text-align:   center;
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 16px;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(114, 245, 66, 0.14), transparent 32%),
+    radial-gradient(circle at 80% 85%, rgba(139, 233, 253, 0.12), transparent 30%),
+    var(--color-space);
 }
 
-img{
-  display: block;
+.auth-card.MuiCard-root {
+  width: min(100%, 450px);
+  overflow: visible;
+  border: 1px solid rgba(114, 245, 66, 0.5);
+  border-radius: 20px;
+  background: rgba(16, 42, 50, 0.96);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+}
+
+.auth-card-wide.MuiCard-root {
+  width: min(100%, 500px);
+  border-color: rgba(139, 233, 253, 0.5);
+}
+
+.auth-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: -58px auto 20px;
+  border-radius: 18px;
+  color: var(--color-space);
+  background: linear-gradient(135deg, var(--color-portal), var(--color-portal-dark));
+  box-shadow: 0 8px 28px rgba(114, 245, 66, 0.32);
+}
+
+.auth-icon-cyan {
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-portal-dark));
+  box-shadow: 0 8px 28px rgba(139, 233, 253, 0.3);
+}
+
+.auth-title.MuiTypography-root {
+  color: var(--color-acid);
+  font-weight: 800;
+  text-align: center;
+}
+
+.auth-subtitle.MuiTypography-root {
+  margin: 6px 0 28px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.portal-action.MuiButton-root {
+  border-radius: 11px;
+  padding: 12px;
+  color: var(--color-space);
+  background: linear-gradient(135deg, var(--color-portal), var(--color-portal-dark));
+  font-weight: 800;
+  text-transform: none;
+}
+
+.portal-action.MuiButton-root:hover {
+  background: linear-gradient(135deg, #8af76a, #3fc554);
+}
+
+.portal-action-cyan.MuiButton-root {
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-portal-dark));
+}
+
+.auth-link.MuiTypography-root {
+  margin-top: 18px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.auth-link + .auth-link.MuiTypography-root {
+  margin-top: 8px;
+}
+
+.auth-link a {
+  color: var(--color-portal);
+  font-weight: 700;
+}
+
+.products-page {
+  display: grid;
+  gap: 24px;
+  width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
+  padding: 40px 0 64px;
+}
+
+.products-hero {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(22px, 4vw, 42px);
+  border: 1px solid rgba(114, 245, 66, 0.28);
+  border-radius: 22px;
+  background:
+    linear-gradient(120deg, rgba(16, 42, 50, 0.96), rgba(7, 24, 33, 0.86)),
+    radial-gradient(circle, rgba(139, 233, 253, 0.2), transparent);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+}
+
+.products-hero h1 {
+  margin: 5px 0 10px;
+  color: var(--color-acid);
+  font-weight: 850;
+}
+
+.products-hero p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.products-hero .MuiButton-root {
+  flex: 0 0 auto;
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+.eyebrow.MuiTypography-root {
+  color: var(--color-portal);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.product-form {
+  scroll-margin-top: 92px;
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid rgba(139, 233, 253, 0.28);
+  border-radius: 18px;
+  background: rgba(16, 42, 50, 0.86);
+}
+
+.product-form-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.product-form-heading > svg {
+  padding: 9px;
+  box-sizing: content-box;
+  border-radius: 12px;
+  color: var(--color-space);
+  background: var(--color-cyan);
+}
+
+.product-form-heading h2,
+.products-section-heading h2 {
+  color: var(--color-acid);
+  font-weight: 800;
+}
+
+.product-form-heading p,
+.products-section-heading p {
+  color: var(--color-muted);
+}
+
+.product-form .MuiInputLabel-root {
+  color: var(--color-muted);
+}
+
+.product-form .MuiInputLabel-root.Mui-focused {
+  color: var(--color-cyan);
+}
+
+.product-form .MuiOutlinedInput-root {
+  color: var(--color-text);
+  background: rgba(7, 24, 33, 0.58);
+}
+
+.product-form .MuiOutlinedInput-root fieldset {
+  border-color: rgba(185, 214, 208, 0.3);
+}
+
+.product-form .MuiOutlinedInput-root:hover fieldset,
+.product-form .MuiOutlinedInput-root.Mui-focused fieldset {
+  border-color: var(--color-cyan);
+}
+
+.product-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.product-form-actions .MuiButton-contained {
+  min-width: 130px;
+  color: var(--color-space);
+  background: var(--color-portal);
+  font-weight: 800;
+}
+
+.product-form-actions .MuiButton-text {
+  color: var(--color-muted);
+}
+
+.products-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.products-state {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px dashed rgba(185, 214, 208, 0.32);
+  border-radius: 18px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.product-card.MuiCard-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(114, 245, 66, 0.22);
+  border-radius: 16px;
+  color: var(--color-text);
+  background: var(--color-panel);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.24);
+}
+
+.product-card .MuiCardMedia-root {
+  object-fit: cover;
+  background: var(--color-space);
+}
+
+.product-placeholder {
+  display: grid;
+  place-items: center;
+  height: 190px;
+  color: var(--color-cyan);
+  background:
+    linear-gradient(145deg, rgba(139, 233, 253, 0.09), rgba(114, 245, 66, 0.08)),
+    var(--color-space);
+}
+
+.product-placeholder svg {
+  font-size: 58px;
+}
+
+.product-card .MuiCardContent-root {
+  flex: 1;
+}
+
+.product-card h3 {
+  color: var(--color-acid);
+  font-weight: 800;
+}
+
+.product-description.MuiTypography-root {
+  display: -webkit-box;
+  min-height: 48px;
+  margin: 7px 0 16px;
+  overflow: hidden;
+  color: var(--color-muted);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.product-meta p:first-child {
+  color: var(--color-portal);
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.product-meta p:last-child {
+  color: var(--color-cyan);
+}
+
+.product-card .MuiCardActions-root {
+  border-top: 1px solid rgba(185, 214, 208, 0.12);
+}
+
+.product-card .MuiCardActions-root .MuiButton-root:not(.MuiButton-colorError) {
+  color: var(--color-cyan);
+}
+
+@media (max-width: 700px) {
+  .products-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .products-hero h1 {
+    font-size: 36px;
+  }
+
+  .products-hero .MuiButton-root {
+    width: 100%;
+  }
 }

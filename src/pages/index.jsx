@@ -3,3 +3,8 @@ export {NosotrosPage} from './nosotros';
 export {EquipoPage} from './equipo';
 export {InicioPage} from './inicio';
 export {PersonajePage} from './PersonajePage';
+export {MuiCardPage} from './MuiCardPage';
+export {LoginPage} from './LoginPage';
+export {RegisterPage} from './RegisterPage';
+export {Dashboard} from './dashboard';
+export {Productos} from './productos';

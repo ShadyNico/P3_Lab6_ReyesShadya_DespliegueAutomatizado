@@ -7,7 +7,7 @@ export const InicioPage = () => {
             <div className="hero_panel">
                 <div>
                     <span className="eyebrow">Portal activo</span>
-                    <h1 className="page_title">Bienvenido al universo Rick and Morty - CAMBIO DE PRUEBA</h1>
+                    <h1 className="page_title">Bienvenido al universo Rick and Morty</h1>
                     <p className="page_text">
                         Explora una interfaz inspirada en viajes interdimensionales,
                         ciencia extraña y personajes de otros mundos.
