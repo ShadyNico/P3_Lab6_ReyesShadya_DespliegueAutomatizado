@@ -1,0 +1,12 @@
+node_modules
+dist
+dev-dist
+tmp
+output
+backend
+.git
+.github
+.env
+*.log
+Dockerfile
+docker-compose.yml

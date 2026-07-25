@@ -1,0 +1,73 @@
+services:
+  database:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-portal_db}
+      POSTGRES_USER: ${POSTGRES_USER:-portal_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-portal_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/database/script.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U ${POSTGRES_USER:-portal_user} -d ${POSTGRES_DB:-portal_db}
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    environment:
+      PORT: 3000
+      CLIENT_ORIGIN: http://localhost:4173,http://localhost:5173
+      JWT_SECRET: ${JWT_SECRET:-desarrollo-local-cambiar-en-produccion}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1h}
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_DATABASE: ${POSTGRES_DB:-portal_db}
+      DB_USER: ${POSTGRES_USER:-portal_user}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-portal_password}
+    ports:
+      - "3000:3000"
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:3000/health/db').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      retries: 8
+
+  frontend:
+    build:
+      context: .
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+    restart: unless-stopped
+    ports:
+      - "4173:4173"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:4173').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))
+      interval: 10s
+      timeout: 5s
+      retries: 8
+
+volumes:
+  postgres_data:
